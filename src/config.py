@@ -25,6 +25,8 @@ SQL_DIR = PROJECT_ROOT / "sql"
 MODELS_DIR = PROJECT_ROOT / "models"
 TESTS_DIR = PROJECT_ROOT / "tests"
 DASHBOARD_DIR = PROJECT_ROOT / "dashboard"
+REPORTS_DIR = PROJECT_ROOT / "reports"
+EDA_REPORTS_DIR = REPORTS_DIR / "eda"
 
 RAW_CREDITCARD_PATH = RAW_DATA_DIR / "creditcard.csv"
 CLEANED_TRANSACTIONS_PATH = PROCESSED_DATA_DIR / "transactions_cleaned.csv"
@@ -37,6 +39,8 @@ for _dir in (
     PROCESSED_DATA_DIR,
     MODELS_DIR,
     DASHBOARD_DIR,
+    REPORTS_DIR,
+    EDA_REPORTS_DIR,
 ):
     _dir.mkdir(parents=True, exist_ok=True)
 
@@ -60,6 +64,7 @@ DATABASE_URL = (
 CREDITCARD_FEATURE_COLUMNS = [f"V{i}" for i in range(1, 29)]
 CREDITCARD_TIME_COLUMN = "Time"
 CREDITCARD_AMOUNT_COLUMN = "Amount"
+CREDITCARD_AMOUNT_LOG_COLUMN = "amount_log"
 CREDITCARD_TARGET_COLUMN = "Class"
 
 RANDOM_STATE = 42
