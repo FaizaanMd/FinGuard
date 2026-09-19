@@ -33,3 +33,5 @@ models/*.pkl
 Thumbs.db
 .vscode/
 .idea/
+# Executed notebooks (reproduce via nbconvert)
+notebooks/*_executed.ipynb
