@@ -1,0 +1,25 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["vw_alert_overview","vw_alert_risk_buckets","vw_amount_buckets","vw_class_overview","vw_hourly_analysis","vw_model_test_confusion","vw_transaction_monitoring"]
+
+ref table vw_alert_overview
+ref table vw_alert_risk_buckets
+ref table vw_amount_buckets
+ref table vw_class_overview
+ref table vw_hourly_analysis
+ref table vw_model_test_confusion
+ref table vw_transaction_monitoring
+
+ref cultureInfo en-US
+

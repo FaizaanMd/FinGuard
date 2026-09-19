@@ -1,0 +1,62 @@
+table vw_class_overview
+	lineageTag: 9b5bfc72-a054-4743-a7e1-096270b5af5c
+
+	column class
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a44b0b8-24e0-4b0e-bb56-fcdffd22ea49
+		summarizeBy: none
+		sourceColumn: class
+
+		annotation SummarizationSetBy = Automatic
+
+	column txns
+		dataType: int64
+		formatString: 0
+		lineageTag: 09e6a27b-926e-49f0-8561-13272b083681
+		summarizeBy: none
+		sourceColumn: txns
+
+		annotation SummarizationSetBy = Automatic
+
+	column share_pct
+		dataType: double
+		lineageTag: a3673c03-122c-4d73-8c3b-dc4718d76067
+		summarizeBy: none
+		sourceColumn: share_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_amount
+		dataType: double
+		lineageTag: 6a9e8853-b2f3-4c85-9858-9c21846bccf3
+		summarizeBy: none
+		sourceColumn: total_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure TxnsSum = SUM(vw_class_overview[txns])
+		lineageTag: b2d43b2592139f8e4f76
+		formatString: #,0
+	measure FraudTxns = CALCULATE(SUM(vw_class_overview[txns]), vw_class_overview[class] = 1)
+		lineageTag: 13888774b0d42b4387f5
+		formatString: #,0
+	measure FraudRatePct = DIVIDE([FraudTxns], [TxnsSum], 0) * 100
+		lineageTag: 2f494a84ac1eb67d9b95
+		formatString: 0.00"%"
+
+
+	partition vw_class_overview = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\faiza\Documents\Default Project\FinGuard\data\dashboard_export\vw_class_overview.csv"), [Delimiter = ",", Columns = 4, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"class", Int64.Type}, {"txns", Int64.Type}, {"share_pct", type number}, {"total_amount", type number}}, "en-US")
+				in
+				  #"Changed column type"
+

@@ -1,0 +1,114 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "83927c455f06ca93c76c",
+  "position": {
+    "x": 600,
+    "y": 240,
+    "z": 4,
+    "height": 340,
+    "width": 1270,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_hourly_analysis"
+                    }
+                  },
+                  "Property": "hour_bucket"
+                }
+              },
+              "queryRef": "vw_hourly_analysis.hour_bucket",
+              "nativeQueryRef": "hour_bucket"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_hourly_analysis"
+                    }
+                  },
+                  "Property": "HourlyTxnsSum"
+                }
+              },
+              "queryRef": "vw_hourly_analysis.HourlyTxnsSum"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_hourly_analysis"
+                    }
+                  },
+                  "Property": "FraudRatePctAvg"
+                }
+              },
+              "queryRef": "vw_hourly_analysis.FraudRatePctAvg"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b37f059a47dfd58a4161",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_hourly_analysis"
+              }
+            },
+            "Property": "hour_bucket"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2393f53c589e921a2082",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_hourly_analysis"
+              }
+            },
+            "Property": "HourlyTxnsSum"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c86274752cfff8123bef",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_hourly_analysis"
+              }
+            },
+            "Property": "FraudRatePctAvg"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

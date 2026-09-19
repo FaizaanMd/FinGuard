@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "FinGuard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7bafacd5-cf7d-4265-a2b9-82a66d56ce30"
+  }
+}

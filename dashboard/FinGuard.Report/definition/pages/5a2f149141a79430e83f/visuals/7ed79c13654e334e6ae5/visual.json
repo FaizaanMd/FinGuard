@@ -1,0 +1,119 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "7ed79c13654e334e6ae5",
+  "position": {
+    "x": 40,
+    "y": 40,
+    "z": 0,
+    "height": 360,
+    "width": 900,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "stackedBarChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_alert_overview"
+                    }
+                  },
+                  "Property": "alert_source"
+                }
+              },
+              "queryRef": "vw_alert_overview.alert_source",
+              "nativeQueryRef": "alert_source"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_alert_overview"
+                    }
+                  },
+                  "Property": "alert_type"
+                }
+              },
+              "queryRef": "vw_alert_overview.alert_type",
+              "nativeQueryRef": "alert_type"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_alert_overview"
+                    }
+                  },
+                  "Property": "AlertsOverviewSum"
+                }
+              },
+              "queryRef": "vw_alert_overview.AlertsOverviewSum"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2371515f455d37271a15",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_alert_overview"
+              }
+            },
+            "Property": "alert_source"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "30659b38b7e06ed6e05f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_alert_overview"
+              }
+            },
+            "Property": "alert_type"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a484af09b272ac0a8f67",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_alert_overview"
+              }
+            },
+            "Property": "AlertsOverviewSum"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+table vw_amount_buckets
+	lineageTag: 97158e57-d747-45bc-bda6-8794161732bc
+
+	column bucket
+		dataType: string
+		lineageTag: 217f7f76-cb02-441b-b8db-291f54f260a9
+		summarizeBy: none
+		sourceColumn: bucket
+
+		annotation SummarizationSetBy = Automatic
+
+	column txns
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d6bba2b-f980-4d8e-9fa5-3f122e11daa1
+		summarizeBy: sum
+		sourceColumn: txns
+
+		annotation SummarizationSetBy = Automatic
+
+	column fraud
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c4946fd-e340-49e4-afec-a777bdcde22c
+		summarizeBy: sum
+		sourceColumn: fraud
+
+		annotation SummarizationSetBy = Automatic
+
+	column fraud_rate_pct
+		dataType: double
+		lineageTag: 18d993d1-e122-425e-be3c-0139bc33b276
+		summarizeBy: sum
+		sourceColumn: fraud_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition vw_amount_buckets = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\faiza\Documents\Default Project\FinGuard\data\dashboard_export\vw_amount_buckets.csv"), [Delimiter = ",", Columns = 4, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"bucket", type text}, {"txns", Int64.Type}, {"fraud", Int64.Type}, {"fraud_rate_pct", type number}}, "en-US")
+				in
+				  #"Changed column type"
+

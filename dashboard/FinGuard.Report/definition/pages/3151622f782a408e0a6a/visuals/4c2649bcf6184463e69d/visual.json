@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "4c2649bcf6184463e69d",
+  "position": {
+    "x": 40,
+    "y": 240,
+    "z": 3,
+    "height": 340,
+    "width": 520,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "CategoryData": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_class_overview"
+                    }
+                  },
+                  "Property": "class"
+                }
+              },
+              "queryRef": "vw_class_overview.class",
+              "nativeQueryRef": "class"
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_class_overview"
+                    }
+                  },
+                  "Property": "TxnsSum"
+                }
+              },
+              "queryRef": "vw_class_overview.TxnsSum"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e57896d41e367b36b3d0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_class_overview"
+              }
+            },
+            "Property": "class"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bf1d247f11cd8ae7b11f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_class_overview"
+              }
+            },
+            "Property": "TxnsSum"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

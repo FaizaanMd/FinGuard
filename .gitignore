@@ -39,5 +39,8 @@ reports/coverage_html/
 Thumbs.db
 .vscode/
 .idea/
+
+# Power BI project (machine-local state)
+**/.pbi/
 # Executed notebooks (reproduce via nbconvert)
 notebooks/*_executed.ipynb

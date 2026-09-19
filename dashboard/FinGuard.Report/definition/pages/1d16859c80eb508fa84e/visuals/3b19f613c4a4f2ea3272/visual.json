@@ -1,0 +1,280 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3b19f613c4a4f2ea3272",
+  "position": {
+    "x": 960,
+    "y": 40,
+    "z": 1,
+    "height": 380,
+    "width": 920,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_model_test_confusion"
+                    }
+                  },
+                  "Property": "model_name"
+                }
+              },
+              "queryRef": "vw_model_test_confusion.model_name",
+              "nativeQueryRef": "model_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_model_test_confusion"
+                    }
+                  },
+                  "Property": "test_rows"
+                }
+              },
+              "queryRef": "vw_model_test_confusion.test_rows",
+              "nativeQueryRef": "test_rows"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_model_test_confusion"
+                    }
+                  },
+                  "Property": "tp"
+                }
+              },
+              "queryRef": "vw_model_test_confusion.tp",
+              "nativeQueryRef": "tp"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_model_test_confusion"
+                    }
+                  },
+                  "Property": "fp"
+                }
+              },
+              "queryRef": "vw_model_test_confusion.fp",
+              "nativeQueryRef": "fp"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_model_test_confusion"
+                    }
+                  },
+                  "Property": "fn"
+                }
+              },
+              "queryRef": "vw_model_test_confusion.fn",
+              "nativeQueryRef": "fn"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_model_test_confusion"
+                    }
+                  },
+                  "Property": "tn"
+                }
+              },
+              "queryRef": "vw_model_test_confusion.tn",
+              "nativeQueryRef": "tn"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_model_test_confusion"
+                    }
+                  },
+                  "Property": "precision_pct"
+                }
+              },
+              "queryRef": "vw_model_test_confusion.precision_pct",
+              "nativeQueryRef": "precision_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_model_test_confusion"
+                    }
+                  },
+                  "Property": "recall_pct"
+                }
+              },
+              "queryRef": "vw_model_test_confusion.recall_pct",
+              "nativeQueryRef": "recall_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_model_test_confusion"
+                    }
+                  },
+                  "Property": "f1_pct"
+                }
+              },
+              "queryRef": "vw_model_test_confusion.f1_pct",
+              "nativeQueryRef": "f1_pct"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "be4cb55adc8fbfe90218",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_model_test_confusion"
+              }
+            },
+            "Property": "model_name"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "855db1c6d5649a2d523e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_model_test_confusion"
+              }
+            },
+            "Property": "test_rows"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e3bd6c8348c4d1864567",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_model_test_confusion"
+              }
+            },
+            "Property": "tp"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e278c249fc65b922893a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_model_test_confusion"
+              }
+            },
+            "Property": "fp"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6b7f43f9f47254e9edec",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_model_test_confusion"
+              }
+            },
+            "Property": "fn"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "04ff3a6b64d45b9e0f75",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_model_test_confusion"
+              }
+            },
+            "Property": "tn"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cdecc8a74dc518716a1a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_model_test_confusion"
+              }
+            },
+            "Property": "precision_pct"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9c222870c462e5e6a372",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_model_test_confusion"
+              }
+            },
+            "Property": "recall_pct"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "10878fb12cc49e7f5e21",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_model_test_confusion"
+              }
+            },
+            "Property": "f1_pct"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

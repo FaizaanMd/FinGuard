@@ -1,0 +1,81 @@
+table vw_alert_overview
+	lineageTag: 81e10b4e-ed8b-4ac4-b3df-a25b0e56bb31
+
+	column alert_source
+		dataType: string
+		lineageTag: 7d1ee9de-4b2f-4fd0-8ee7-f5e5314bb375
+		summarizeBy: none
+		sourceColumn: alert_source
+
+		annotation SummarizationSetBy = Automatic
+
+	column alert_type
+		dataType: string
+		lineageTag: 836799ec-1725-474a-8a53-00a1756bc9ec
+		summarizeBy: none
+		sourceColumn: alert_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column alert_status
+		dataType: string
+		lineageTag: 379d5def-d2cd-4d07-ab8c-e8f3a866ccad
+		summarizeBy: none
+		sourceColumn: alert_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column alerts
+		dataType: int64
+		formatString: 0
+		lineageTag: 97b988ec-ad5b-4d78-a239-4b5a6840e52a
+		summarizeBy: none
+		sourceColumn: alerts
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_risk
+		dataType: double
+		lineageTag: 9b389845-3288-4f69-8458-359778cc0c82
+		summarizeBy: none
+		sourceColumn: avg_risk
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column max_risk
+		dataType: double
+		lineageTag: aaeb3d71-d6d0-4ac3-92dc-bf9930fb6fdf
+		summarizeBy: none
+		sourceColumn: max_risk
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column share_pct
+		dataType: double
+		lineageTag: 2fee628f-4071-4ef5-9f34-2a0f1bbbe364
+		summarizeBy: none
+		sourceColumn: share_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AlertsOverviewSum = SUM(vw_alert_overview[alerts])
+		lineageTag: 4982a3e517712ae985b0
+		formatString: #,0
+
+
+	partition vw_alert_overview = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\faiza\Documents\Default Project\FinGuard\data\dashboard_export\vw_alert_overview.csv"), [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"alert_source", type text}, {"alert_type", type text}, {"alert_status", type text}, {"alerts", Int64.Type}, {"avg_risk", type number}, {"max_risk", type number}, {"share_pct", type number}}, "en-US")
+				in
+				  #"Changed column type"
+

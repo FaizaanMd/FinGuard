@@ -1,0 +1,8 @@
+relationship AutoDetected_5d403d0b-ff33-4b02-8096-be927f42f02b
+	fromColumn: vw_alert_risk_buckets.alert_source
+	toColumn: vw_alert_overview.alert_source
+
+relationship AutoDetected_a055b8d0-076c-4871-8704-0eaad0689645
+	fromColumn: vw_transaction_monitoring.class
+	toColumn: vw_class_overview.class
+

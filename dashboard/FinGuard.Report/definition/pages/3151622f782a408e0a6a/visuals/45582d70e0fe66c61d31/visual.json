@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "45582d70e0fe66c61d31",
+  "position": {
+    "x": 380,
+    "y": 40,
+    "z": 1,
+    "height": 150,
+    "width": 300,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_class_overview"
+                    }
+                  },
+                  "Property": "FraudTxns"
+                }
+              },
+              "queryRef": "vw_class_overview.FraudTxns"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a2332a67dacfc09054a9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_class_overview"
+              }
+            },
+            "Property": "FraudTxns"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "680f5ca53efe6ecd041e",
+  "position": {
+    "x": 40,
+    "y": 40,
+    "z": 0,
+    "height": 150,
+    "width": 300,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_class_overview"
+                    }
+                  },
+                  "Property": "TxnsSum"
+                }
+              },
+              "queryRef": "vw_class_overview.TxnsSum"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "bf1d247f11cd8ae7b11f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_class_overview"
+              }
+            },
+            "Property": "TxnsSum"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,8 +1,14 @@
-# Phase 10 — Power BI Dashboard (guided build)
+# Phase 10 — Power BI Dashboard
 
-The `.pbix` must be built in Power BI Desktop (GUI tool). This guide tells you
-exactly what to click and which visual to draw from which data source. Data is
-ready in two forms:
+**Final deliverable: `FinGuard_Dashboard.pbix`** — open it with Power BI Desktop.
+Three pages: *Monitoring overview*, *Detection performance*, *Alert workload*.
+A companion project (`FinGuard.pbip` + `FinGuard.Report/` +
+`FinGuard.SemanticModel/`) is also included as the editable source of the same
+report.
+
+The `.pbix` was built by hand in Power BI Desktop. If you need to rebuild or
+improve it, this guide tells you exactly what to click and which visual to draw
+from which data source. Data is ready in two forms:
 
 1. **Live**: PostgreSQL `finguard` database — views `vw_*` (see
    `sql/dashboard_views.sql`). Regenerate with

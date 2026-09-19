@@ -1,0 +1,43 @@
+table vw_alert_risk_buckets
+	lineageTag: 202f2aa5-c347-4d0c-8517-08418e475109
+
+	column alert_source
+		dataType: string
+		lineageTag: 32205083-6003-4d4f-a50d-55573950aa99
+		summarizeBy: none
+		sourceColumn: alert_source
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_bucket
+		dataType: string
+		lineageTag: 210f770e-5e85-409c-99e7-8311fb6cfd67
+		summarizeBy: none
+		sourceColumn: risk_bucket
+
+		annotation SummarizationSetBy = Automatic
+
+	column alerts
+		dataType: int64
+		formatString: 0
+		lineageTag: e14ab160-11c4-42b7-bdcb-f3a163276620
+		summarizeBy: sum
+		sourceColumn: alerts
+
+		annotation SummarizationSetBy = Automatic
+
+	measure AlertsBucketsSum = SUM(vw_alert_risk_buckets[alerts])
+		lineageTag: a19f21cc0e7911004198
+		formatString: #,0
+
+
+	partition vw_alert_risk_buckets = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\faiza\Documents\Default Project\FinGuard\data\dashboard_export\vw_alert_risk_buckets.csv"), [Delimiter = ",", Columns = 3, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"alert_source", type text}, {"risk_bucket", type text}, {"alerts", Int64.Type}}, "en-US")
+				in
+				  #"Changed column type"
+

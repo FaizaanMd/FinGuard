@@ -1,0 +1,119 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "34fa86e2c5c425961b0b",
+  "position": {
+    "x": 980,
+    "y": 40,
+    "z": 1,
+    "height": 360,
+    "width": 900,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "stackedBarChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_alert_risk_buckets"
+                    }
+                  },
+                  "Property": "alert_source"
+                }
+              },
+              "queryRef": "vw_alert_risk_buckets.alert_source",
+              "nativeQueryRef": "alert_source"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_alert_risk_buckets"
+                    }
+                  },
+                  "Property": "risk_bucket"
+                }
+              },
+              "queryRef": "vw_alert_risk_buckets.risk_bucket",
+              "nativeQueryRef": "risk_bucket"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_alert_risk_buckets"
+                    }
+                  },
+                  "Property": "AlertsBucketsSum"
+                }
+              },
+              "queryRef": "vw_alert_risk_buckets.AlertsBucketsSum"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8317063c1d9d5a601256",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_alert_risk_buckets"
+              }
+            },
+            "Property": "alert_source"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cf9a640b1fd5f407f002",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_alert_risk_buckets"
+              }
+            },
+            "Property": "risk_bucket"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4f7132a056b02d3ee9cc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_alert_risk_buckets"
+              }
+            },
+            "Property": "AlertsBucketsSum"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

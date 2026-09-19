@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f1d58b5f2cf36635ce24",
+  "position": {
+    "x": 40,
+    "y": 900,
+    "z": 3,
+    "height": 100,
+    "width": 1840,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "textbox": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Alerts are triage signals, not fraud verdicts. max_risk_score combines rules + model signals (0-1).'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

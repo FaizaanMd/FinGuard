@@ -1,0 +1,84 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "67cf461082706084ca6a",
+  "position": {
+    "x": 10,
+    "y": 0,
+    "z": 0,
+    "height": 280,
+    "width": 280,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_class_overview"
+                    }
+                  },
+                  "Property": "class"
+                }
+              },
+              "queryRef": "vw_class_overview.class",
+              "nativeQueryRef": "class"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_class_overview"
+                    }
+                  },
+                  "Property": "txns"
+                }
+              },
+              "queryRef": "vw_class_overview.txns",
+              "nativeQueryRef": "txns"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a1af578ee804346c9b75",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_class_overview"
+              }
+            },
+            "Property": "class"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "97207cbc8d2cb18936e9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vw_class_overview"
+              }
+            },
+            "Property": "txns"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
