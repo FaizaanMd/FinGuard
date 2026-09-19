@@ -7,7 +7,6 @@ import pandas as pd
 from src.model_evaluation import (
     confusion_rows,
     export_summary,
-    run_report_all,
 )
 
 
@@ -19,7 +18,10 @@ def test_confusion_rows_counts_are_correct():
                    "tn": 1, "fp": 1, "fn": 1, "tp": 1}
 
 
-def test_run_report_all_uses_output_dict_schema():
+def test_run_report_all_uses_output_dict_schema(tmp_path, monkeypatch):
+    import src.model_evaluation as me
+    from src.config import MODEL_EVAL_DIR
+    monkeypatch.setattr(me, "MODEL_EVAL_DIR", tmp_path)
     from src.fraud_detection import evaluate as feval
     rng = np.random.default_rng(0)
     n = 200
@@ -29,7 +31,6 @@ def test_run_report_all_uses_output_dict_schema():
         "random_forest": np.clip(rng.random(n) + y_test * 0.5, 0, 1),
     }
     thresholds = {"logistic_regression": 0.5, "random_forest": 0.5}
-    split_val = None
     results = {
         name: feval(y_test, probas[name], thr, name)
         for name, thr in thresholds.items()}
@@ -43,6 +44,9 @@ def test_run_report_all_uses_output_dict_schema():
             "threshold": [0.5], "precision": [0.5], "recall": [0.5], "f1": [0.5]}
         ) for name in probas},
     }
-    run_report_all(out)  # writes to reports/model_eval/ (temp-ish, small)
-    summary = export_summary(results)
+    me.run_report_all(out)  # writes artefacts to tmp_path, not the repo
+    summary = me.export_summary(results)
     assert list(summary.index) == ["logistic_regression", "random_forest"]
+    assert (tmp_path / "metrics.csv").exists()
+    # real repo artefacts must remain untouched by tests
+    assert (MODEL_EVAL_DIR / "metrics.csv").exists()
