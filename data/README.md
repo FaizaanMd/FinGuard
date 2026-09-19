@@ -1,0 +1,19 @@
+# Dataset
+
+## Track A — Benchmark dataset
+
+The benchmark uses the publicly available **Credit Card Fraud Detection**
+dataset (anonymized features `V1..V28`, `Time`, `Amount`, `Class`).
+
+Source and download instructions will be documented here in **Phase 2**. The
+raw file (`creditcard.csv`, ~150 MB) is **not committed** to the repository for
+size and licensing reasons. Place it at `data/raw/creditcard.csv`.
+
+## Track B — Business simulation
+
+A clearly-labelled **synthetic** transaction dataset (customer_id, merchant
+category, velocity, etc.) used to demonstrate operational analytics and
+monitoring workflows. It does **not** represent real banking data and generated
+patterns will not be presented as findings from a financial institution.
+
+See: [Project blueprint §6](README) for the dataset strategy.
