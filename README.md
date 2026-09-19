@@ -36,17 +36,19 @@ FinGuard/
 
 ## Roadmap
 
-- [ ] Phase 1 — Environment & project skeleton
-- [ ] Phase 2 — Dataset acquisition & validation
-- [ ] Phase 3 — Cleaning & feature engineering
-- [ ] Phase 4 — SQL database integration
-- [ ] Phase 5 — SQL analytics
-- [ ] Phase 6 — EDA & statistical analysis
-- [ ] Phase 7 — Rule-based detection
-- [ ] Phase 8 — Machine learning models
+- [x] Phase 1 — Environment & project skeleton
+- [x] Phase 2 — Dataset acquisition & validation
+- [x] Phase 3 — Cleaning & feature engineering
+- [x] Phase 4 — SQL database integration
+- [x] Phase 5 — SQL analytics
+- [x] Phase 6 — EDA & statistical analysis
+- [x] Phase 7 — Rule-based detection
+- [x] Phase 8 — Machine learning models
 - [ ] Phase 9 — Anomaly detection
 - [ ] Phase 10 — Power BI dashboard
 - [ ] Phase 11 — Testing & quality
 - [ ] Phase 12 — Documentation & portfolio
 
-*(Detailed documentation will be added as each phase completes.)*
+Progress: Track A benchmark end-to-end. Rule baseline: 0.28% precision /
+15.7% recall. Supervised Random Forest: **93.7% precision / 77.9% recall /
+PR-AUC 0.847** on held-out test (details in `reports/model_eval/README.md`).

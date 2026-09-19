@@ -62,11 +62,16 @@ CREATE TABLE IF NOT EXISTS model_predictions (
     fraud_probability    NUMERIC(10, 8) NOT NULL,
     predicted_label      INTEGER NOT NULL
         CONSTRAINT model_predictions_label_check CHECK (predicted_label IN (0, 1)),
+    split                VARCHAR(20) NOT NULL DEFAULT 'full',
     prediction_timestamp TIMESTAMP NOT NULL DEFAULT now()
 );
 
+ALTER TABLE model_predictions
+    ADD COLUMN IF NOT EXISTS split VARCHAR(20) NOT NULL DEFAULT 'full';
+
 CREATE INDEX IF NOT EXISTS idx_predictions_transaction ON model_predictions (transaction_id);
 CREATE INDEX IF NOT EXISTS idx_predictions_model       ON model_predictions (model_name);
+CREATE INDEX IF NOT EXISTS idx_predictions_split       ON model_predictions (split);
 
 -- Investigation alerts produced by rules and/or models. 'alert_status' is a
 -- simulated workflow state, not a connection to any real institution.

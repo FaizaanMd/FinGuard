@@ -1,0 +1,3 @@
+model,threshold,tn,fp,fn,tp
+logistic_regression,0.9999,56631,20,20,75
+random_forest,0.38121569282136897,56646,5,21,74

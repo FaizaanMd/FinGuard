@@ -68,7 +68,24 @@ CREDITCARD_AMOUNT_LOG_COLUMN = "amount_log"
 CREDITCARD_TARGET_COLUMN = "Class"
 
 RANDOM_STATE = 42
-TEST_SIZE = 0.2
+
+# Features consumed by the supervised models.
+# Raw `Time` is excluded; only its derived features (hour_of_day, day_index)
+# are used. `Amount` is excluded in favour of `amount_log` (log1p), which was
+# engineered for scale behaviour. The anonymized V1..V28 are already unit-scale.
+MODEL_FEATURE_COLUMNS = (
+    CREDITCARD_FEATURE_COLUMNS
+    + [CREDITCARD_AMOUNT_LOG_COLUMN, "hour_of_day", "day_index"]
+)
+
+# Split geography: train / validation / test (stratified).
+TRAIN_FRACTION = 0.60
+VALIDATION_FRACTION = 0.20
+
+MODEL_EVAL_DIR = REPORTS_DIR / "model_eval"
+EXPERIMENTS_LOG = MODELS_DIR / "experiments.csv"
+
+MODEL_EVAL_DIR.mkdir(parents=True, exist_ok=True)
 
 # Cleaning behaviour: dropping full-row duplicates protects random train/test
 # splits from leakage. Set False to keep duplicates (then use a duplicate-aware
