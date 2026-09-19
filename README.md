@@ -4,6 +4,8 @@ Intelligent Financial Fraud Detection & Transaction Monitoring Platform — a
 portfolio-grade analytics project combining Python, SQL, machine learning, and
 Power BI.
 
+[![CI](https://github.com/FaizaanMd/FinGuard/actions/workflows/ci.yml/badge.svg)](https://github.com/FaizaanMd/FinGuard/actions/workflows/ci.yml)
+
 > **Status note:** This is a *fraud analytics and transaction monitoring
 > prototype* with a reproducible machine learning and reporting workflow. It is
 > not a production or regulatory-grade banking security system.
