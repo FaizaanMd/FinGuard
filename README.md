@@ -47,10 +47,49 @@ FinGuard/
 - [x] Phase 9 — Anomaly detection
 - [x] Phase 10 — Power BI dashboard (data prep + guided build)
 - [x] Phase 11 — Testing & quality
-- [ ] Phase 12 — Documentation & portfolio
+- [x] Phase 12 — Documentation & portfolio
 
-Progress: Track A benchmark end-to-end. Rule baseline: 0.28% precision /
-15.7% recall. Supervised Random Forest: **93.7% precision / 77.9% recall /
-PR-AUC 0.847** on held-out test (details in `reports/model_eval/README.md`).
-Unsupervised Isolation Forest: ROC-AUC 0.953 / PR-AUC 0.207 label-free
-(details in `reports/anomaly/README.md`).
+## Key results (Track A — ULB credit-card benchmark)
+
+| Detector | Kind | Precision | Recall | PR-AUC | Alerts on test |
+|---|---:|---:|---:|---:|---:|
+| Rule engine (baseline) | supervised rules | 0.28% | 15.7% | — | 26,632 |
+| Logistic Regression | supervised | 78.9% | 78.9% | 0.731 | 95 |
+| **Random Forest** | supervised | **93.7%** | 77.9% | **0.847** | **79** |
+| Isolation Forest | unsupervised | 21.0% (top-200) | 44.2% | 0.207 | 568 |
+
+Random Forest detects ~78% of fraud with 5 false positives (vs 26k rule
+alerts); scores, confusion matrices, and every decision are documented in
+`reports/`.
+
+## Reproduce everything
+
+```
+.venv\Scripts\activate
+pip install -r requirements-dev.txt      # dev tools (pytest, pytest-cov)
+python scripts\run_all.py                # 8-stage runbook: data -> DB -> models -> exports
+python -m pytest --cov=src               # 53 unit tests, DB-free, ~25 s
+```
+
+`run_all.py` validation + cleaning + feature stages run without a database;
+stages 4–8 (PostgreSQL, alerts, models, dashboard exports) need the `finguard`
+database and `.env`. See `reports/testing/README.md` for the test design and
+the bugs the suite caught.
+
+## Report index
+
+| Topic | Location |
+|---|---|
+| Data dictionary & quality | `data/` |
+| SQL analytics (23 queries) | `sql/analytics_summary.md` |
+| EDA & statistics | `reports/eda/` |
+| Rule baseline | `reports/rules/README.md` |
+| Model evaluation | `reports/model_eval/README.md` |
+| Anomaly detection | `reports/anomaly/README.md` |
+| Power BI build guide | `dashboard/README.md` |
+| Tests & coverage | `reports/testing/README.md` |
+
+## Tech stack
+
+Python 3.12 (pandas · NumPy · scikit-learn · SQLAlchemy/psycopg2 · scipy ·
+Jupyter) · PostgreSQL 17 · Git · Power BI Desktop · GitHub Actions (CI).

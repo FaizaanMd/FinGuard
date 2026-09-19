@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run unit tests (database-free)
+        run: python -m pytest --cov=src --cov-report=term-missing
+      - name: Verify runbook decodes (validation + cleaning + features)
+        run: python -c "
+from pathlib import Path
+import sys; sys.path.insert(0, '.')
+import pandas as pd
+from src import data_validation, data_cleaning, feature_engineering
+import numpy as np, tempfile, os
+rng = np.random.default_rng(0)
+frame = pd.DataFrame(rng.normal(size=(200, 28)),
+                     columns=[f'V{i}' for i in range(1, 29)])
+frame['Time'] = np.linspace(0, 172800, 200)
+frame['Amount'] = rng.lognormal(3.0, 1.0, 200)
+frame['Class'] = rng.binomial(1, 0.05, 200)
+assert data_validation.build_report(frame)['status'] in ('PASS', 'WARN')
+cleaned, _ = data_cleaning.clean(frame)
+feat = feature_engineering.build_features(cleaned)
+assert set(('hour_of_day', 'day_index', 'amount_log')) <= set(feat.columns)
+print('runbook smoke OK')"
