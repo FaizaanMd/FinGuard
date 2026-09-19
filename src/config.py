@@ -85,7 +85,15 @@ VALIDATION_FRACTION = 0.20
 MODEL_EVAL_DIR = REPORTS_DIR / "model_eval"
 EXPERIMENTS_LOG = MODELS_DIR / "experiments.csv"
 
+ANOMALY_REPORTS_DIR = REPORTS_DIR / "anomaly"
+# Expected proportion of anomalies. A modelling assumption, NOT derived from
+# the labels (using the known fraud rate to set contamination would leak the
+# label into an unsupervised method).
+ANOMALY_CONTAMINATION = 0.002
+ANOMALY_N_ESTIMATORS = 200
+
 MODEL_EVAL_DIR.mkdir(parents=True, exist_ok=True)
+ANOMALY_REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Cleaning behaviour: dropping full-row duplicates protects random train/test
 # splits from leakage. Set False to keep duplicates (then use a duplicate-aware

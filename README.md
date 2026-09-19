@@ -44,7 +44,7 @@ FinGuard/
 - [x] Phase 6 — EDA & statistical analysis
 - [x] Phase 7 — Rule-based detection
 - [x] Phase 8 — Machine learning models
-- [ ] Phase 9 — Anomaly detection
+- [x] Phase 9 — Anomaly detection
 - [ ] Phase 10 — Power BI dashboard
 - [ ] Phase 11 — Testing & quality
 - [ ] Phase 12 — Documentation & portfolio
@@ -52,3 +52,5 @@ FinGuard/
 Progress: Track A benchmark end-to-end. Rule baseline: 0.28% precision /
 15.7% recall. Supervised Random Forest: **93.7% precision / 77.9% recall /
 PR-AUC 0.847** on held-out test (details in `reports/model_eval/README.md`).
+Unsupervised Isolation Forest: ROC-AUC 0.953 / PR-AUC 0.207 label-free
+(details in `reports/anomaly/README.md`).
