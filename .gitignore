@@ -30,6 +30,10 @@ models/*.pkl
 # Logs
 *.log
 
+# Test coverage output (regenerate with --cov-report=html)
+reports/coverage_html/
+.coverage
+
 # OS / IDE
 .DS_Store
 Thumbs.db

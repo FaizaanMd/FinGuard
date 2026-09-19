@@ -122,14 +122,15 @@ def score_transactions(df: pd.DataFrame, rules: list[Rule]) -> pd.DataFrame:
     """Combine triggered rules into per-transaction risk indicators."""
     out = df[["transaction_id"]].copy()
     out["rules_triggered"] = ""
+    out["n_rules"] = 0
     combined = np.zeros(len(df))
     for rule in rules:
         mask = rule.mask.to_numpy()
         out.loc[mask, "rules_triggered"] += rule.name + ";"
-        weights = np.where(mask, rule.weight, 0.0)
-        combined = 1.0 - (1.0 - combined) * (1.0 - weights)
+        out.loc[mask, "n_rules"] = out.loc[mask, "n_rules"] + 1
+        combined = 1.0 - (1.0 - combined) * (1.0 - np.where(mask, rule.weight, 0.0))
     out["rules_triggered"] = out["rules_triggered"].str.rstrip(";")
-    out["n_rules"] = out["rules_triggered"].str.split(";").str[0].ne("").astype(int)
+    out["n_rules"] = out["n_rules"].astype(int)
     out["risk_score"] = combined.round(4)
     return out
 

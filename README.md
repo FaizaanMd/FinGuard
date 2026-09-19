@@ -46,7 +46,7 @@ FinGuard/
 - [x] Phase 8 — Machine learning models
 - [x] Phase 9 — Anomaly detection
 - [x] Phase 10 — Power BI dashboard (data prep + guided build)
-- [ ] Phase 11 — Testing & quality
+- [x] Phase 11 — Testing & quality
 - [ ] Phase 12 — Documentation & portfolio
 
 Progress: Track A benchmark end-to-end. Rule baseline: 0.28% precision /
