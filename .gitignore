@@ -17,9 +17,11 @@ venv/
 data/raw/*
 data/processed/*
 data/interim/*
+data/dashboard_export/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/interim/.gitkeep
+!data/dashboard_export/.gitkeep
 
 # Serialized models (large binaries)
 models/*.joblib

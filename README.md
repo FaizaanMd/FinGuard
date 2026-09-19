@@ -45,7 +45,7 @@ FinGuard/
 - [x] Phase 7 — Rule-based detection
 - [x] Phase 8 — Machine learning models
 - [x] Phase 9 — Anomaly detection
-- [ ] Phase 10 — Power BI dashboard
+- [x] Phase 10 — Power BI dashboard (data prep + guided build)
 - [ ] Phase 11 — Testing & quality
 - [ ] Phase 12 — Documentation & portfolio
 
