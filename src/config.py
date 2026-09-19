@@ -28,6 +28,7 @@ DASHBOARD_DIR = PROJECT_ROOT / "dashboard"
 
 RAW_CREDITCARD_PATH = RAW_DATA_DIR / "creditcard.csv"
 CLEANED_TRANSACTIONS_PATH = PROCESSED_DATA_DIR / "transactions_cleaned.csv"
+ENGINEERED_FEATURES_PATH = PROCESSED_DATA_DIR / "features_engineered.csv"
 
 # Ensure core directories exist on import.
 for _dir in (
@@ -63,3 +64,8 @@ CREDITCARD_TARGET_COLUMN = "Class"
 
 RANDOM_STATE = 42
 TEST_SIZE = 0.2
+
+# Cleaning behaviour: dropping full-row duplicates protects random train/test
+# splits from leakage. Set False to keep duplicates (then use a duplicate-aware
+# split in the modeling phase instead).
+DROP_DUPLICATES = True
